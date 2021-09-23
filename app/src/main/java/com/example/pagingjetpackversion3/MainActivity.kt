@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        val viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         lifecycleScope.launchWhenCreated {
             viewModel.getListData().collectLatest {
                 mAdapter.submitData(it)

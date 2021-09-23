@@ -1,6 +1,5 @@
 package com.example.pagingjetpackversion3
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,6 +40,7 @@ class UserAdapter: PagingDataAdapter<Results, UserAdapter.MyViewHolder>(DiffUtil
         override fun areContentsTheSame(oldItem: Results, newItem: Results): Boolean {
             return oldItem.name == newItem.name
         }
+
 
     }
 }

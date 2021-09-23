@@ -13,11 +13,7 @@ import kotlinx.coroutines.flow.Flow
 
 class MainActivityViewModel: ViewModel() {
 
-    var retrofitService: RetrofitService
-
-    init {
-        retrofitService = RetrofitInstance.getRetrofitInstance().create(RetrofitService::class.java)
-    }
+    var retrofitService: RetrofitService = RetrofitInstance.getRetrofitInstance().create(RetrofitService::class.java)
 
     fun getListData(): Flow<PagingData<Results>> {
         return Pager(config = PagingConfig(pageSize = 34, prefetchDistance = 20),

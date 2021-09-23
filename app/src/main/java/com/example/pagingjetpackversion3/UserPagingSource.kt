@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 import com.example.pagingjetpackversion3.model.Results
 import com.example.pagingjetpackversion3.network.RetrofitService
 
-class UserPagingSource(val apiService: RetrofitService): PagingSource<Int, Results>() {
+class UserPagingSource(private val apiService: RetrofitService): PagingSource<Int, Results>() {
 
     companion object {
         private const val FIRST_PAGE = 1
@@ -21,8 +21,8 @@ class UserPagingSource(val apiService: RetrofitService): PagingSource<Int, Resul
             val nextPage = params.key ?: FIRST_PAGE
             val response = apiService.getDataFromAPI(nextPage)
             var nextPageNumber: Int? = null
-            if (response?.info?.next != null) {
-                val uri = Uri.parse(response?.info?.next!!)
+            if (response.info.next != null) {
+                val uri = Uri.parse(response.info.next)
                 val nextPageQuery = uri.getQueryParameter("page")
                 nextPageNumber = nextPageQuery?.toInt()
             }
